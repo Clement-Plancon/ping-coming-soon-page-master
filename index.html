@@ -1,34 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Ping coming soon page</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link rel="stylesheet" href="./style/style.css">
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+    <title>Frontend Mentor | Ping coming soon page</title>
+
+
 </head>
+
 <body>
 
-  We are launching soon!
+    <div class="header">
+        <img src="./images/logo.svg" alt="">
+        <h1>We are launching <span>soon!</span></h1>
+        <h2>Subscribe and get notified</h2>
+        <div class="inputContainer">
+            <input type="text" placeholder="Your email adress...">
+            <button onclick="checkForm(document.querySelector('input').value)">Notify Me</button>
+        </div>
+        <span class="error" style='color:hsl(354, 100%, 66%);font-size: 10px; position: relative; left: -20%;'></span>
+        <span class="validate" style='color:green;font-size: 10px; position: relative; left: -20%;'></span>
+    </div>
 
-  Subscribe and get notified
+    <div class="center">
+        <img src="./images/illustration-dashboard.png" alt="stat image">
+    </div>
 
-  Notify Me
+    <div class="footer">
+        <div class="iconContainer">
+            <div class="iconContainer__circle">
+                <img src="./images/icons8-f-de-facebook.svg" alt="">
+            </div>
+            <div class="iconContainer__circle">
+                <img src="./images/icons8-twitter.svg" alt="">
+            </div>
+            <div class="iconContainer__circle">
+                <img src="./images/icons8-instagram (2).svg" alt="">
+            </div>
 
-  &copy; Copyright Ping. All rights reserved.
+        </div>
+        <p>&copy; Copyright Ping All rights reserved</p>
+    </div>
+    <script>
+        const checkForm = (email) => {
+            if (document.querySelector('input').value.length == 0) {
+                document.querySelector('input').style.border = "1px solid hsl(354, 100%, 66%)"
+                document.querySelector('.error').innerHTML = "Whoops! It looks like you forgot to add your email"
+            } else {
+                var re = /\S+@\S+\.\S+/;
+                re.test(email) == true ? (document.querySelector('input').style.border = "1px solid green", document.querySelector('.validate').innerHTML = "Email valide") : document.querySelector('input').style.border = "1px solid hsl(354, 100%, 66%)", document.querySelector('.error').innerHTML = "Email invalide"
 
-  <footer>
-    <p class="attribution">
-      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-      Coded by <a href="#">Your Name Here</a>.
-    </p>
-  </footer>
+            }
+        }
+    </script>
 </body>
+
 </html>
